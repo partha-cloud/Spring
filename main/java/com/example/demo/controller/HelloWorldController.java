@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.model.User;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/hello", ""})
@@ -23,5 +19,16 @@ public class HelloWorldController {
     public String showHello(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz.";
     }
+
+    @PostMapping("/post")
+    public String showHello(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz.";
+    }
+
+    @PutMapping("/put/{firstName}")
+    public String showHelloByPut(@PathVariable String firstName, @RequestParam(value="lastName") String lastName) {
+        return "Welcome "+firstName+" "+lastName+" from BridgeLabz.";
+    }
 }
-}
+
+

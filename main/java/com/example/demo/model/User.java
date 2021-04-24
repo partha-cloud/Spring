@@ -17,8 +17,5 @@ public class User {
     public String getLastName() {
         return lastName;
     }
-    @PostMapping("/post")
-    public String showHello(@RequestBody User user) {
-        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz.";
-    }
+
 }
